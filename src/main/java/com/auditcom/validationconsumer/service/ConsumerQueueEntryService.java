@@ -16,17 +16,7 @@ public class ConsumerQueueEntryService {
 
     public ResultadoAlimentoAcordanteEntrada validationRule(AlimentoAcordanteEntrada alimentoAcordanteEntrada) {
         return feignClientService.getResultado(
-            alimentoAcordanteEntrada.getUfEmitente(),
-            alimentoAcordanteEntrada.getUfDestinatario(),
-            alimentoAcordanteEntrada.getPercentualICMS(),
-            alimentoAcordanteEntrada.getCrt(),
-            alimentoAcordanteEntrada.getValorItem(),
-            alimentoAcordanteEntrada.getValorIPI(),
-            alimentoAcordanteEntrada.getValorFrete(),
-            alimentoAcordanteEntrada.getValorSeguro(),
-            alimentoAcordanteEntrada.getValorOutros(),
-            alimentoAcordanteEntrada.getCst(),
-            alimentoAcordanteEntrada.getCategoria()
+        		alimentoAcordanteEntrada
         );
     }
 
