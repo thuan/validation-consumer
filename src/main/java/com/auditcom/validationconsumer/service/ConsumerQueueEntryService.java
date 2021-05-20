@@ -16,6 +16,9 @@ public class ConsumerQueueEntryService {
 	@Autowired
 	private RequestQueueOuputService requestQueueOuputService;
 
+	@Autowired
+	private PersistAlimentoAcordanteEntradaService persistAlimentoAcordanteEntradaService;
+
 	public ResponseEntity<ResultadoAlimentoAcordanteEntrada> validationRule(
 			AlimentoAcordanteEntrada alimentoAcordanteEntrada) {
 		return feignClientService.getResultado(alimentoAcordanteEntrada);
@@ -24,7 +27,7 @@ public class ConsumerQueueEntryService {
 	public void putToQueueOuput(AlimentoAcordanteEntrada alimentoAcordanteEntrada) {
 		ResponseEntity<ResultadoAlimentoAcordanteEntrada> resultadoAlimentoAcordanteEntrada = validationRule(
 				alimentoAcordanteEntrada);
-
+		persistAlimentoAcordanteEntradaService.add(alimentoAcordanteEntrada);
 		requestQueueOuputService.putQueueOuput(resultadoAlimentoAcordanteEntrada.getBody());
 	}
 }
