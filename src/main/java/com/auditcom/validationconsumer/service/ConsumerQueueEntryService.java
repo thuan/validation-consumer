@@ -28,6 +28,8 @@ public class ConsumerQueueEntryService {
 		ResponseEntity<ResultadoAlimentoAcordanteEntrada> resultadoAlimentoAcordanteEntrada = validationRule(
 				alimentoAcordanteEntrada);
 		persistAlimentoAcordanteEntradaService.add(alimentoAcordanteEntrada);
+
+		resultadoAlimentoAcordanteEntrada.getBody().setIdNf(alimentoAcordanteEntrada.getIdNf());
 		requestQueueOuputService.putQueueOuput(resultadoAlimentoAcordanteEntrada.getBody());
 	}
 }
